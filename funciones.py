@@ -1,6 +1,7 @@
 #Librerias importadas
 import re
 import random
+from datetime import datetime
 
 #Funciones
 #Reto 1
@@ -48,7 +49,7 @@ def EsPar(num):
     if num%2==0:
         return True
     else:
-        return False
+        return False   
     
 def indicarParidad(pveces):
     i=1
@@ -72,3 +73,74 @@ def indicarParidad(pveces):
           +str(listaPares))
     
     return
+
+#Reto 5
+def notasImaginarias():
+    i=1
+    aprobados=0
+    reposicion=0
+    reprobados=0
+    total=0
+    notas=[]
+    while i<=10:
+        nota=random.randint(1,100)
+        if nota>=70:
+            aprobados+=1
+        elif nota>=60:
+            reposicion+=1
+        else:
+            reprobados+=1
+        total+=nota
+        i+=1
+        notas.append(nota)
+    print(f'-------------------------------------\n'+'Lista de notas:',notas)
+    print('-------------------------------------')
+    print(f'Aprovados:',aprobados)
+    print(f'Reposicion:',reposicion)
+    print(f'Reprobados:',reprobados)
+    print(f'Promedio:',(total/10))
+    return
+
+#Reto 8
+def annoBisiesto(edad,anno):
+    if (anno-edad)%4==0:
+        return True
+    else:
+        return False
+
+def lasEdadesDeMisConocidos(pveces): 
+    anno=datetime.now().year
+    i=1
+    mayor=0
+    menor=150
+    lista=[]
+
+    while i<=pveces:
+        edad=int(input(f"Indique la edad "+str(i)+":"))
+        lista.append(edad)
+        if edad>mayor:
+            mayor=edad
+        if edad<menor:
+            menor=edad  
+        i+=1
+    diferencia=(anno-menor)-(anno-mayor)
+    lista.remove(mayor)
+    lista.remove(menor)
+    i=1
+
+    print('------------------------------------------------------------')
+    if annoBisiesto(mayor,anno):
+        print(F"\nEl mayor nacio en el año "+str(anno-mayor)+'. Esta persona nacio en un año bisiesto')
+    else:
+        print(F"\nEl mayor nacio en el año "+str(anno-mayor)+'.')
+    if annoBisiesto(menor,anno):
+        print(F"\nEl menor nacio en el año "+str(anno-menor)+'. Esta persona nacio en un año bisiesto')
+    else:
+        print(F"\nEl menor nacio en el año "+str(anno-menor)+'.')
+    
+    print(F"Hay",diferencia,"entre el mayor y el menor. En ese rango se encuentran las edades:")
+    
+    for n in lista:
+        print("Edad "+str(i)+":",n)
+
+    return 
