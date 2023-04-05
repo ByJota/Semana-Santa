@@ -7,6 +7,28 @@ def validarPositivo(pnum):
         return menu()
     else:
         indicarParidad(pnum)
+        
+def obtenerGordoAUX (pnum):
+    if pnum <= 0:
+        print('El numero ingresado debe ser mayor a 0')
+        return menu()
+    else:
+        obtenerGordo(pnum)
+        
+def obtenerGordo(pnum):
+    print('El gordo navideño se viene par!:',obtenerLista(pnum))
+    return ''
+
+def convertirListaAUX (carnets):
+    lista = carnets.split(', ')
+    i = 0
+    while i in range (len(lista)):
+        if re.match("^\d{10}$",lista[i]):
+            print("Canet valido")
+        else:
+            print("Carnet Invalido. Porfavor digite un carnet de 10 digitos numericos")
+        i+=1
+    return clasificarGen(lista)
 
 def menu():
 
@@ -37,13 +59,15 @@ def menu():
             texto=input()
             AnalizarCadena(texto)
         elif opcion == 2 :
-            print("Ingrese un numero mayor a cero:")
-            num=int(input())
-            validarPositivo(num)
+            print("Ingrese un numero:")
+            num = int(input())
+            obtenerGordoAUX(num)
         elif opcion == 3:
             print('')
         elif opcion == 4:
-            print('')
+            print('Ingrese el numero de carnets, separados por "," :')
+            carnets = input()
+            convertirListaAUX (carnets)
         elif opcion == 5:
             print('')
         elif opcion == 6:   
