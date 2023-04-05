@@ -1,8 +1,8 @@
-#Librerias
+#Librerias importadas
 import re
+import random
 
 #Funciones
-
 #Reto 1
 def AnalizarCadena(texto):
     """ Funcionalidad: Analiza una cadena en str 
@@ -42,9 +42,33 @@ def AnalizarCadena(texto):
 
     return
 
-AnalizarCadena('') 
-AnalizarCadena('Murcielago!') 
-AnalizarCadena('Hola, buenos dias a todos') 
-AnalizarCadena('La prueba tiene una duracion de 110 minutos') 
-AnalizarCadena('Luis: Como te fue?') 
-AnalizarCadena('12345 .,;!?: abcde') 
+#Reto 3
+def EsPar(num):
+
+    if num%2==0:
+        return True
+    else:
+        return False
+    
+def indicarParidad(pveces):
+    i=1
+    lista=[]
+    listaPares=[]
+    while i<=pveces:
+        numero=random.randint(0,99)
+        lista.append(numero)
+        if EsPar(numero):
+            listaPares.append(0)
+        else:
+            listaPares.append(1)
+        i+=1
+    
+    print(f"Lista de numeros Random\n"+
+          str(lista))
+    print('')
+    print(f"Lista si es par o no es par\n"+
+          "0 es par\n"+
+          '1 es impar\n'
+          +str(listaPares))
+    
+    return
