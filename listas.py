@@ -66,14 +66,21 @@ def menu():
             print('')
         elif opcion == 4:
             print('Ingrese el numero de carnets, separados por "," :')
-            carnets = input()
+            carnets = "2018012345, 2021019876, 2021021234, 2019012345, 2018025678, 2022012345"
             convertirListaAUX (carnets)
         elif opcion == 5:
             print('')
         elif opcion == 6:   
+            print('Ingrese una lista de palabras:')
+            print('Entrada:',['ana','comida','somos','hola'])
+            print('Salida:',encontrarPalindromo(['ana','comida','somos','hola']))
             print('')
-        elif opcion == 7:   
-            print('')
+            print('Entrada:',['ana','comida','somos','hola','radar','oro','mundo'])
+            print('Salida:',encontrarPalindromo(['ana','comida','somos','hola','radar','oro','mundo']))
+        elif opcion == 7:
+            num = int(input('Digite la cantidad de edades que desea clasificar:'))
+            print('---------------------------')   
+            print(obtenerEdades(num))
         elif opcion == 8:
             print('')
         elif opcion == 9:

@@ -132,3 +132,58 @@ def clasificarGen (lista):
           "\nDel 2021:",c2021,
           "\nDel 2022:",c2022,
           "\nDel 2023:",c2023)
+
+#reto6 Lista palindromos
+def espalindromo(ppalabra):
+    i =- 1
+    i2 = 0
+    contador = 0
+    while i2 < len(ppalabra):
+        inicio= ppalabra[i2]
+        fin = ppalabra[i]
+        i-= 1
+        i2+= 1
+        if inicio == fin:
+            contador += 1
+    return contador == len(ppalabra)
+
+def encontrarPalindromo(lista):
+    listaPalin = []
+    for i in range (len(lista)):
+        if espalindromo(lista[i]):
+            listaPalin.append(lista[i])
+    return listaPalin
+
+#reto7 clasificar edades
+def obtenerEdades (pnum):
+    listaEdades=[]
+    while len(listaEdades) < pnum:
+        numRandom = random.randint(1,99)
+        listaEdades.append(numRandom)
+    return clasificarEdades(listaEdades)
+
+def clasificarEdades(listaEdades):
+    bebe = 0
+    ninno= 0
+    adolescente= 0
+    adultoJoven= 0
+    adultoMayor= 0
+    for i in range (len(listaEdades)):
+        edad = listaEdades[i]
+        if edad <= 3:
+            bebe+=1
+        elif edad <= 12:
+            ninno+=1
+        elif edad <= 21:
+            adolescente+=1
+        elif edad <=60:
+            adultoJoven+=1
+        else:
+            adultoMayor+=1
+    print('Edades generadas:', listaEdades,
+          "\nBebé:",bebe,
+          "\nNiño:",ninno,
+          "\nAdolescente:",adolescente,
+          "\nAdulto joven:",adultoJoven,
+          "\nAdulto mayor:",adultoMayor)
+    return ''
