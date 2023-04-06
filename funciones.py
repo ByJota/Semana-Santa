@@ -135,6 +135,14 @@ def clasificarGen (lista):
 
 #reto6 Lista palindromos
 def espalindromo(ppalabra):
+    """
+    Funcion: Determinar si una palabra es palindroma
+    Entradas:
+    - ppalabra(str): palabra
+    Salidas:
+    - True
+    - False
+    """
     i =- 1
     i2 = 0
     contador = 0
@@ -148,6 +156,13 @@ def espalindromo(ppalabra):
     return contador == len(ppalabra)
 
 def encontrarPalindromo(lista):
+    """
+    Funcion: Añadir palabras palindromas a una lista
+    Entradas:
+    - lista(list): lista de palabras
+    Salidas:
+    - listaPalin(list): lista con palabras únicamente palindromas
+    """
     listaPalin = []
     for i in range (len(lista)):
         if espalindromo(lista[i]):
@@ -156,6 +171,13 @@ def encontrarPalindromo(lista):
 
 #reto7 clasificar edades
 def obtenerEdades (pnum):
+    """
+    Funcion: Obtener pnum cantidad de edades aleatorias
+    Entradas:
+    - pnum(int): número de edades
+    Salidas:
+    - listaEdades(list): lista con las edades 
+    """
     listaEdades=[]
     while len(listaEdades) < pnum:
         numRandom = random.randint(1,99)
@@ -163,6 +185,14 @@ def obtenerEdades (pnum):
     return clasificarEdades(listaEdades)
 
 def clasificarEdades(listaEdades):
+    """
+    Funcion: Clasificar la edad
+    Entradas:
+    - listaEdades(list): lista con las edades
+    Salidas:
+    - contador con la cantidad de edades dependiendo de la etapa de la vida en la que este 
+    """
+    list
     bebe = 0
     ninno= 0
     adolescente= 0
@@ -187,3 +217,28 @@ def clasificarEdades(listaEdades):
           "\nAdulto joven:",adultoJoven,
           "\nAdulto mayor:",adultoMayor)
     return ''
+
+#reto 9 Producto Cartesiano
+"""
+    Funcion: Crear un producto cartesiano
+    Entradas:
+    - lista(list): lista con una lista A y una lista B
+    Salidas:
+    - productoCartesiano(list): arreglo de listas con todos los productos
+    """
+def obtenerProductoCartesiano(lista):
+    i = 0
+    x = 1
+    contador = 0
+    productoCartesiano = []
+    while i < len(lista[0]): 
+        indiceA = lista[0]
+        elementoA= indiceA[i]
+        while contador in range (len(lista[x])):
+            indiceB= lista[x]
+            elementoB= indiceB[contador]
+            productoCartesiano.append([elementoA,elementoB])
+            contador+=1 
+        i += 1
+        contador = 0
+    return productoCartesiano

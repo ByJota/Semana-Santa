@@ -30,6 +30,16 @@ def convertirListaAUX (carnets):
         i+=1
     return clasificarGen(lista)
 
+def ESproductoCartesiano():
+    print("El producto cartesiano de:",
+        "\n[1,2],['x','y','z']", "es:")
+    print(obtenerProductoCartesiano([[1,2],['x','y','z']]))
+    print("-------------------------------------")
+    print("El producto cartesiano de:",
+        "\n[1,2,3,4],['a','b']", "es:")
+    print(obtenerProductoCartesiano([[1,2,3,4],['a','b']]))
+    return ''
+
 def menu():
 
     """
@@ -84,7 +94,7 @@ def menu():
         elif opcion == 8:
             print('')
         elif opcion == 9:
-            print('')
+            print(ESproductoCartesiano())
         else:
             return
     else:
