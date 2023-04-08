@@ -1,6 +1,7 @@
 #Librerias importadas
 import re
 import random
+from datetime import datetime
 
 #Funciones
 #Reto 1
