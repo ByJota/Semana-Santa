@@ -24,76 +24,89 @@ while True:
 import re
 #definicion de funciones
 def codigoSpoonAUX(pcode):
+    """
+    Función: Validar el código
+    Entradas:
+    - pcode(str): Código del item
+    Salidas:
+    - Dirige el código a  la función correspondiente que lo decodifica
+    """
     if not (len(pcode)>=4 and len(pcode)<=7):
         return"Ingrese un codigo de 4 a 7 letras"
     else:
-        if re.match('RE\w',pcode):
-            return codigoSpoon(pcode)
-        elif re.match('QE\w',pcode):
-            for i in pcode:
-                if i.isdigit():
-                    return"Los codigos de los queque no llevan numeros."
-            return codigoSpoon(pcode)
-        elif re.match('TCAGR',pcode):
-            return codigoSpoon(pcode)
+        pcode = pcode.upper()
+        if re.match('^RE',pcode):
+            return determinarTipoRE(pcode)
+        #determina si es una reposteria
+        elif re.match('^QE',pcode):
+            if re.match('[A-Z]',pcode):
+                return determinarTipoQE(pcode)
+            else:
+                return "Los códigos de queques no llevan caracteres númericos."
+        elif re.match('^TCAGR',pcode):
+            result= "Usted solicita una torta chilena de tamaño Grande."
+            return result
         else:
-            return"Codigo ingresado invalido"
+            return"El código ingresado no pertenece al de un producto.Ingrese un código valido."
             
-def codigoSpoon(code):
-    result='Ha solicitado '
-    
-    if re.match('RE[DS]',code):
-        if re.match('RED[13457]',code) and len(code)==4:
-            result+='una reposteria dulce. '
-            type=code[3]
+def determinarTipoRE(pcode):
+    """
+    Función: Determina el sabor,tipo y tamaño de una repostería
+    Entradas:
+    - pcode(str): Código del item
+    Salidas:
+    - result(str): Cadena del item decodificada
+    """
+    result='Usted solicita una repostería de sabor  ' 
+    if re.match('RE[DS]',pcode):
+        if re.match('RED[13457]',pcode) and len(pcode)==4:
+            result+='Dulce '
+            type=pcode[3]
             if type=='1':
-                result+='Correspode a un: Nidito.'
+                result+='correspondiente a un: Nidito.'
             elif type=='3':
-                result+='Correspode a un: Orejita'
+                result+='correspondiente a un: Orejita'
             elif type=='4':
-                result+='Correspode a un: Biscuit'
+                result+='correspondiente a un: Biscuit'
             elif type=='5':
-                result+='Correspode a un: Crocante'
+                result+='correspondiente a un: Crocante'
             elif type=='7':
-                result+='Correspode a una: Empanada'
+                result+='correspondiente a una: Empanada'
             else:
-                result='Error en el codigo ingresado'
+                result='El código ingresado no corresponde a una repostería valida'
         else:
-            result+='una reposteria Salada. '
-            type=code[3]
+            result+='Salada '
+            type=pcode[3]
             if type=='1':
-                result+='Correspode a un: Nidito '
+                result+='correspondiente a un: Nidito '
             elif type=='2':
-                result+='Correspode a un: Palito de queso.'
+                result+='correspondiente a un: Palito de queso.'
             elif type=='4':
-                result+='Correspode a un: Biscuit.'
+                result+='correspondiente a un: Biscuit.'
             elif type=='6':
-                result+='Correspode a una: Enchilada '
+                result+='correspondiente a una: Enchilada '
             elif type=='7':
-                result+='Correspode a una: Empanada '
+                result+='correspondiente a una: Empanada '
             else:
-                result='Error en el codigo ingresado'
-        
-            if re.match('RES[167][12]',code):
-                type=code[4]
+                result='El código ingresado no corresponde a una repostería valida'
+            #determina el sabor
+            if re.match('RES[167][12]',pcode):
+                type=pcode[4]
                 if type=='1':
-                    result+='de pollo. '
+                    result+='de pollo, '
                 elif type=='2':
-                    result+='de carne. '
+                    result+='de carne, '
                 else:
-                    result='Error en el codigo ingresado.'
-            
-            if re.match('RES[167][12]PQ',code):
-                result+='Tamaño pequeño.'
-            elif re.match('RES[167][12]MD',code):
-                result+='Tamaño mediano.'
-            elif re.match('RES[167][12]GD',code):
-                result+='Tamaño grande.'
+                    result='El código ingresado no corresponde a un Sabor valido.'
+            #determina el tamaño
+            if re.match('RES[167][12]PQ',pcode):
+                result+='de tamaño Pequeño.'
+            elif re.match('RES[167][12]MD',pcode):
+                result+='de tamaño Mediano.'
+            elif re.match('RES[167][12]GD',pcode):
+                result+='de tamaño Grande.'
             else:
-                result='Error en el codigo ingresado.'
-    
-    if re.match('TCAGR',code):
-        result+='una torta chilena, tamaño grande.'
+                result='El código ingresado no concuerda con ningún item'
     return result
 
 def determinarTipoQE (pcode):
