@@ -96,6 +96,34 @@ def codigoSpoon(code):
         result+='una torta chilena, tamaño grande.'
     return result
 
+def determinarTipoQE (pcode):
+    """
+    Función: Determina el sabor y tamaño de un queque
+    Entradas:
+    - pcode(str): Código del item
+    Salidas:
+    - result(str): Cadena del item decodificada
+    """
+    result="Usted solicita un queque sabor de "
+    if re.match("QE[A-Z]{2}FR",pcode):
+        result+= "Fresa"
+    elif re.match("QE[A-Z]{2}VN",pcode):
+        result+= "Vainilla"
+    elif re.match("QE[A-Z]{2}CM",pcode):
+        result+= "Caramelo"
+    elif re.match("QE[A-Z]{2}CE",pcode):
+        result+= "Chocolate"
+    else:
+       result="El código de item no corresponde a sabor de queque"
+    #determina el tamaño
+    if re.match('QE[GR]',pcode):
+        result+=', de tamaño Grande.'
+    elif re.match('QE[PQ]',pcode):
+        result+=', de tamaño Pequeño.'
+    else:
+        result="El código de item no corresponde a un tamaño de queque"   
+    return result
+
 #Programa Principal
 while True:
     try:
