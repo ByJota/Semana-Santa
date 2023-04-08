@@ -6,7 +6,7 @@ def validarPositivo(pnum):
         print('El numero ingresado debe ser mayor a 0')
         return menu()
     else:
-        indicarParidad(pnum)
+        return
         
 def obtenerGordoAUX (pnum):
     if pnum <= 0:
@@ -73,13 +73,17 @@ def menu():
             num = int(input())
             obtenerGordoAUX(num)
         elif opcion == 3:
-            print('')
+            num=int(input('Ingrese la cantidad de numeros aleatorios que quieres analizar:'))
+            validarPositivo(num)
+            indicarParidad(num)
         elif opcion == 4:
             print('Ingrese el numero de carnets, separados por "," :')
             carnets = "2018012345, 2021019876, 2021021234, 2019012345, 2018025678, 2022012345"
             convertirListaAUX (carnets)
         elif opcion == 5:
-            print('')
+            num=int(input("Indique la cantidad de numeros aleatorios que quieres analizar:"))
+            validarPositivo(num)
+            notasImaginarias(num)
         elif opcion == 6:   
             print('Ingrese una lista de palabras:')
             print('Entrada:',['ana','comida','somos','hola'])
@@ -92,7 +96,9 @@ def menu():
             print('---------------------------')   
             print(obtenerEdades(num))
         elif opcion == 8:
-            print('')
+            num=int(input("Indique la edades que quieres ingresar:"))
+            validarPositivo(num)
+            lasEdadesDeMisConocidos(num)
         elif opcion == 9:
             print(ESproductoCartesiano())
         else:
