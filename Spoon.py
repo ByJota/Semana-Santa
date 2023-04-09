@@ -143,6 +143,24 @@ while True:
         out=1
         print("Programa de gerencia de Spoon.\n"+
             "---------------------------------------")
+        print("En el menú se encuentran disponibles: ",
+              "\nRepostería [RES] (dulce[D]-salada[S]):",
+              "  \n-1) Nidito",
+              "  \n-2) Palito de Queso",
+              "  \n-3) Orejita",
+              "  \n-4) Biscuit",
+              "  \n-5) Crocante",
+              "  \n-6) Enchilada (carne[1]/pollo[2])",
+              "  \n-7) Empanada (carne[1]/pollo[2])",
+            "\n---------------------------------------")
+        print("Queques (grande/pequeño):",
+              "  \n-Fresa-Chocolate",
+              "  \n-Vainilla",
+              "  \n-Caramelo",
+              "  \n-Chocolate",
+            "\n---------------------------------------")
+        print("Torta Chilena (grande):",
+            "\n---------------------------------------")
         while out==1:
             print("Ingrese un codigo de la lista otorgada por el administrados.\n")
             code=input('Codigo:')
